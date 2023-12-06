@@ -36,15 +36,15 @@ function Booking() {
         if (value.length === 2) {
             setShoes(prevState => (
                 prevState.map(shoe =>
-                    shoe.id === name ? { ...shoe, size: value } : shoe 
-            )));
-            
+                    shoe.id === name ? { ...shoe, size: value } : shoe
+                )));
+
         }
     }
 
     function addShoe(name) {
         setError(false);
-    
+
         setShoes([...shoes, { id: name, size: '' }]);
     }
 
@@ -74,19 +74,19 @@ function Booking() {
     }
 
     async function book() {
-        if (booking.when && booking.lanes 
-            && booking.time && shoes.length > 0 
+        if (booking.when && booking.lanes
+            && booking.time && shoes.length > 0
             && comparePeopleAndShoes()
-            ) {
-                const bookingInfo = {
-                    when: `${booking.when}T${booking.time}`,
-                    lanes: booking.lanes,
-                    people: booking.people,
-                    shoes: shoes.map(shoe => shoe.size)
-                }
-        
-                const confirmation = await sendBooking(bookingInfo);
-                navigate('/confirmation', { state: { confirmationDetails: confirmation }});
+        ) {
+            const bookingInfo = {
+                when: `${booking.when}T${booking.time}`,
+                lanes: booking.lanes,
+                people: booking.people,
+                shoes: shoes.map(shoe => shoe.size)
+            }
+
+            const confirmation = await sendBooking(bookingInfo);
+            navigate('/confirmation', { state: { confirmationDetails: confirmation } });
         } else {
             setError(true);
         }
@@ -96,11 +96,11 @@ function Booking() {
         <section className='booking'>
             <Navigation />
             <Top title="Booking" />
-            <BookingInfo updateBookingDetails={ updateBookingDetails } />
-            <Shoes updateSize={ updateSize } addShoe={ addShoe }
-                    removeShoe={ removeShoe } shoes={ shoes } />
-            <button className="button booking__button" onClick={ book }>strIIIIIike!</button>
-            { error ? <ErrorMessage /> : '' }
+            <BookingInfo updateBookingDetails={updateBookingDetails} />
+            <Shoes updateSize={updateSize} addShoe={addShoe}
+                removeShoe={removeShoe} shoes={shoes} />
+            <button className="button booking__button" onClick={book}>strIIIIIike!</button>
+            {error ? <ErrorMessage /> : ''}
         </section>
     )
 }

@@ -12,23 +12,23 @@ function Confirmation() {
         <section className='confirmation'>
             <Navigation />
             <Top title="See you soon!" />
-            { state ?
-                <form className='confirmation__details'> 
+            {state ?
+                <form className='confirmation__details'>
                     <Input label="When" type="text" customClass="confirmation__input"
-                    defaultValue={ state.confirmationDetails.when.replace('T', ' ') }
-                    disabled="disabled" />
-                    <Input label="Who" type="text"  customClass="confirmation__input"
-                    defaultValue={ state.confirmationDetails.people }
-                    disabled="disabled" />
+                        defaultValue={state.confirmationDetails.when.replace('T', ' ')}
+                        disabled="disabled" />
+                    <Input label="Who" type="text" customClass="confirmation__input"
+                        defaultValue={state.confirmationDetails.people}
+                        disabled="disabled" />
                     <Input label="Lanes" type="text" customClass="confirmation__input"
-                    defaultValue={ state.confirmationDetails.lanes }
-                    disabled="disabled" />
-                    <Input label="Booking number" type="text" customClass="confirmation__input"
-                    defaultValue={ state.confirmationDetails.id }
-                    disabled="disabled" />
+                        defaultValue={state.confirmationDetails.lanes}
+                        disabled="disabled" />
+                    <Input id='bookingNumber' label="Booking number" type="text" customClass="confirmation__input"
+                        defaultValue={state.confirmationDetails.id}
+                        disabled="disabled" />
                     <article className='confirmation__price'>
                         <p>Total:</p>
-                        <p>{ state.confirmationDetails.price } sek</p>
+                        <p>{state.confirmationDetails.price} sek</p>
                     </article>
                     <button className='button confirmation__button'>Sweet, let's go!</button>
                 </form> : <h2 className='confirmation__no-booking'>Inga bokning gjord!</h2>
